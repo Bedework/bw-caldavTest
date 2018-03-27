@@ -1,0 +1,8 @@
+DESCRIPTION: Try get of principal card
+
+METHOD: GET
+
+AUTH: true
+
+URL: /ucarddav/principals/users/douglm.vcf
+

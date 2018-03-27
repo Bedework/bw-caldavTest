@@ -1,0 +1,14 @@
+DESCRIPTION: Events with a description
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: /ucaldav/principals/users/
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENTFILE: content/eg36.xml
+

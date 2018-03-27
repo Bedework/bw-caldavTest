@@ -1,0 +1,41 @@
+DESCRIPTION: Test escaping in x-prop
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/A76203A7-0B14-45DB-A76C-654E99E51C55-B.ics
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+PRODID:-//Apple Inc.//iOS 10.7.2//EN
+VERSION:2.0
+BEGIN:VTODO
+CREATED:20111004T082611Z
+DTSTAMP:20111004T082628Z
+DTSTART;VALUE=DATE:20111004
+RECURRENCE-ID;VALUE=DATE:20111004
+LAST-MODIFIED:20111004T082622Z
+DESCRIPTION:this is an appointment 
+ with plenty of fields set\, and spe
+ cial attributes...\n\nempty line ab
+ ove\, line\nbreak\n\nspecial charac
+ ters:\na-umlaut ä\nexclamation mark
+  !\nampersand disabled\nhash #\nlef
+ t angle bracket disabled\nright ang
+ le bracket disabled\nleft square br
+ acket [\nright square bracket ]\nle
+ ft bracket (\nright bracket )\nback
+ slash \\\nbackslash lf \\n\nbacksla
+ sh cr \\r\nstar *\ncarret ^\npercen
+ t %\ntilde ~\ntick `\nbacktick `\nd
+ ouble quotation - not tested becaus
+ e Evolution encodes it incorrectly\
+ nsingle quotation '\ncolon :\nsemic
+ olon \;\ncomma \,
+SUMMARY:Location
+UID:A76203A7-0B14-45DB-A76C-654E99E51C55-B
+END:VTODO
+END:VCALENDAR

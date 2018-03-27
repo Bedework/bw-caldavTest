@@ -1,0 +1,8 @@
+DESCRIPTION: Simple GET
+
+METHOD: GET
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/calendar/1302105461170.ics
+

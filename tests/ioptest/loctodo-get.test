@@ -1,0 +1,8 @@
+DESCRIPTION: Test escaping in x-prop
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/A76203A7-0B14-45DB-A76C-654E99E51C55-B.ics
+

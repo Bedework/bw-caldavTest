@@ -1,0 +1,30 @@
+DESCRIPTION: REPORT Searching for address book and vcard for a given email
+
+METHOD: REPORT
+
+AUTH: true
+
+EXPECT-RESPONSE: 207
+
+URL: /ucarddav/principals
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:principal-property-search xmlns:D="DAV:"
+            xmlns:C="urn:ietf:params:xml:ns:carddav">
+  <D:property-search>
+    <D:prop>
+      <C:email/>
+    </D:prop>
+    <D:match>douglm@mysite.edu</D:match>
+  </D:property-search>
+  <D:prop>
+    <C:addressbook-home-set/>
+    <C:principal-address/>
+    <D:displayname/>
+  </D:prop>
+</D:principal-property-search>

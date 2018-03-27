@@ -1,0 +1,19 @@
+DESCRIPTION: Free/busy request on bad url
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: free_busy/
+
+DEPTH: 1
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<C:free-busy-query xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <C:time-range start="20060926T000000Z"
+                  end="20061025T240000Z"/>
+</C:free-busy-query>
+

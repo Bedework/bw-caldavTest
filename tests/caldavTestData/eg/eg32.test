@@ -1,0 +1,8 @@
+DESCRIPTION: 8.4.1 multiget,auth + hrefs
+
+METHOD: GET
+
+AUTH: true
+
+URL: /ucaldav/principals/users
+

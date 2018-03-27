@@ -1,0 +1,12 @@
+DESCRIPTION: OPTIONS test
+
+METHOD: OPTIONS
+
+AUTH: false
+
+URL: /ucaldav/user/douglm/
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+

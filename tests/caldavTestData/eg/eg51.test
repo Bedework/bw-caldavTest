@@ -1,0 +1,16 @@
+DESCRIPTION: timezones server test POST
+
+METHOD: POST
+
+AUTH: false
+
+URL: /tzsvr/
+
+DEPTH: 1
+
+CONTENTTYPE: text/text
+
+CONTENT:
+id=12345abcde
+refresh=yes
+

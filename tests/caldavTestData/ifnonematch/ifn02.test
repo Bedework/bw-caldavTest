@@ -1,0 +1,22 @@
+DESCRIPTION: Get the event etag
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: calendar/
+
+DEPTH: 1
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<C:calendar-multiget xmlns:D="DAV:"
+                     xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:prop>
+    <D:getetag/>
+  </D:prop>
+  <D:href>http://localhost/ucaldav/user/douglm/calendar/ifnonematch01.ics</D:href>
+</C:calendar-multiget>
+

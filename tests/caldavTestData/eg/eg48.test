@@ -1,0 +1,22 @@
+DESCRIPTION: Set calendar color
+
+METHOD: PROPPATCH
+
+AUTH: true
+
+EXPECT-RESPONSE: 207
+
+URL: /ucaldav/user/douglm/calendar/
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="UTF-8" ?>
+<x0:propertyupdate xmlns:x0="DAV:" xmlns:x1="http://apple.com/ns/ical/">
+  <x0:set>
+    <x0:prop>
+      <x1:calendar-color>#F57802FF</x1:calendar-color>
+    </x0:prop>
+  </x0:set>
+</x0:propertyupdate>
+

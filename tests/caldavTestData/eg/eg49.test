@@ -1,0 +1,27 @@
+DESCRIPTION: propfind on calendar
+
+METHOD: PROPFIND
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/Inbox
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:propfind xmlns:D="DAV:"
+            xmlns:C="urn:ietf:params:xml:ns:caldav"
+            xmlns:A="http://apple.com/ns/ical/">
+  <D:prop>
+    <D:resourcetype/>
+    <A:calendar-color/>
+    <C:calendar-timezone/>
+    <D:current-user-principal/>
+    <C:supported-calendar-component-set/>
+    <C:max-resource-size/>
+  </D:prop>
+</D:propfind>
+

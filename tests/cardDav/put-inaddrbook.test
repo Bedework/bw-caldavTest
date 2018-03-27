@@ -1,0 +1,26 @@
+DESCRIPTION: vcard in addressbook
+
+METHOD: PUT
+
+AUTH: true
+
+HEADER: IF-None-Match: *
+
+URL: addressbook/uid002a-j@mysite.edu.vcf
+
+CONTENTTYPE: text/vcard
+
+CONTENT:
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//BedeworkTest//BedeworkTest
+UID:uid002a-j@mysite.edu
+FN:Mike Douglass
+N;SORT-AS="Mike;Douglass":Douglass;Mike;;
+EMAIL:douglm@mysite.edu
+CALADRURI:mailto:douglm@mysite.edu
+NOTE:A description of the card - changed again
+PHOTO;VALUE=uri:http://cnx.org/content/m14773/latest/graphics12.jpg
+RELATED;TYPE=assistant,manager:http://example.com/directory/jdoe.vcf
+X-BEDEWORK:my x property
+END:VCARD

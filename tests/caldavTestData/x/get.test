@@ -1,0 +1,8 @@
+DESCRIPTION: Simple GET
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/20101118T172927Z-11ac-4e20-769f-005-Oracle.ics
+

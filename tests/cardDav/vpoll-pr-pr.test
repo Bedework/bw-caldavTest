@@ -1,0 +1,31 @@
+DESCRIPTION: REPORT Principal property search used for vpoll client
+
+METHOD: REPORT
+
+AUTH: true
+
+EXPECT-RESPONSE: 207
+
+URL: /ucaldav/principals
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:principal-property-search xmlns:D="DAV:"
+            xmlns:C="urn:ietf:params:xml:ns:caldav"
+            xmlns:CD="urn:ietf:params:xml:ns:carddav">
+  <D:property-search>
+    <D:prop>
+      <D:displayname/>
+    </D:prop>
+    <D:match>dougl</D:match>
+  </D:property-search>
+  <D:prop>
+      <D:displayname/>
+      <C:calendar-user-address-set/>
+      <CD:address-data content-type="application/vcard+json" />
+  </D:prop>
+</D:principal-property-search>

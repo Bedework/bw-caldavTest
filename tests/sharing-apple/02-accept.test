@@ -1,0 +1,24 @@
+DESCRIPTION: send invitation
+
+METHOD: POST
+
+AUTH: true
+
+URL: /ucaldav/user/johnsa
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version='1.0' encoding='UTF-8'?>
+<invite-reply xmlns:D="DAV:"  xmlns='http://calendarserver.org/ns/'>
+  <D:href>mailto:johnsa@mysite.edu</D:href>
+  <invite-accepted/>
+  <hosturl>
+    <D:href>/ucaldav/user/douglm/shared</D:href>
+  </hosturl>
+  <in-reply-to>ff808081-467e3bef-0146-7e3eb08b-0000000e</in-reply-to>
+  <summary>The Shared Calendar</summary>
+  <common-name>Arlen Johnson</common-name>
+  <first-name>Arlen</first-name>
+  <last-name>Johnson</last-name>
+</invite-reply>

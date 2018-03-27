@@ -1,0 +1,25 @@
+DESCRIPTION: Set calendar properties for douglm
+
+METHOD: PROPPATCH
+
+AUTH: true
+
+EXPECT-RESPONSE: 207
+
+URL: /ucaldav/user/douglm/shared/
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="UTF-8" ?>
+<x0:propertyupdate xmlns:x0="DAV:"
+                   xmlns:C="urn:ietf:params:xml:ns:caldav" 
+                   xmlns:x1="http://apple.com/ns/ical/">
+  <x0:set>
+    <x0:prop>
+      <x1:calendar-color>#F57802FF</x1:calendar-color>
+      <x0:displayname>changedname</x0:displayname>
+      <C:schedule-calendar-transp><C:opaque/></C:schedule-calendar-transp>
+    </x0:prop>
+  </x0:set>
+</x0:propertyupdate>

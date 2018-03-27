@@ -1,0 +1,33 @@
+DESCRIPTION: POST to get freebusy
+
+METHOD: POST
+
+AUTH: true
+
+HEADER: originator: mailto:johnsa@mysite.edu
+HEADER: recipient: mailto:testuser18@mysite.edu, mailto:testuser19@mysite.edu
+
+
+URL: Outbox/
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+VERSION:2.0
+METHOD:REQUEST
+PRODID:-//Apple Inc.//iCal 4.0//EN
+BEGIN:VFREEBUSY
+UID:9C07D13B-F9DC-4A69-85C2-CB06BAA85208
+DTEND:20090602T201500Z
+ATTENDEE:mailto:testuser18@mysite.edu
+ATTENDEE:mailto:testuser19@mysite.edu
+DTSTART:20090602T191500Z
+Z-CALENDARSERVER-MASK-UID:F04FD04D-44E2-4C58-8F21-830EC383C320
+DTSTAMP:20090602T114630Z
+ORGANIZER:mailto:johnsa@mysite.edu
+SUMMARY:Availability for mailto:testuser18@mysite.edu and mailto:testu
+ ser19@bedework.org
+END:VFREEBUSY
+END:VCALENDAR

@@ -1,0 +1,7 @@
+DESCRIPTION: get event with location
+
+METHOD: GET
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/calendar/loctest-000002.ics

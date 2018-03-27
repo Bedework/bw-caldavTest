@@ -1,0 +1,14 @@
+DESCRIPTION: propfind to display caluser/calendar access
+
+METHOD: PROPFIND
+
+AUTH: true
+
+URL: calendar
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENTFILE: content/eg15.xml
+

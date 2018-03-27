@@ -1,0 +1,10 @@
+DESCRIPTION: get a notification
+
+METHOD: GET
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/Notifications/invite-replyff808081-467c46e5-0146-7c4864c6-0000000e-reply
+
+CONTENT:
+

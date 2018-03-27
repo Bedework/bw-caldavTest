@@ -1,0 +1,11 @@
+DESCRIPTION: GET on root for XRD
+
+METHOD: GET
+
+AUTH: true
+
+EXPECT-RESPONSE: 200
+
+URL: /ucalws/
+
+HEADER: Accept: application/xrd+xml

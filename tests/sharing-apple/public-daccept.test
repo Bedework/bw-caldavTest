@@ -1,0 +1,24 @@
+DESCRIPTION: reply to public invitation
+
+METHOD: POST
+
+AUTH: true
+
+URL: /ucaldav/user/douglm
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version='1.0' encoding='UTF-8'?>
+<invite-reply xmlns:D="DAV:"  xmlns='http://calendarserver.org/ns/'>
+  <D:href>mailto:douglm@mysite.edu</D:href>
+  <invite-accepted/>
+  <hosturl>
+    <D:href>/ucaldav/user/agrp_calsuite-MainCampus/Arts</D:href>
+  </hosturl>
+  <in-reply-to>ff808181-39553e75-0139-553ff2b4-00000034</in-reply-to>
+  <summary>Shared Arts</summary>
+  <common-name>Mike Douglass</common-name>
+  <first-name>Mike</first-name>
+  <last-name>Douglass</last-name>
+</invite-reply>

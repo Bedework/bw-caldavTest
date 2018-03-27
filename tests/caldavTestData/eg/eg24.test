@@ -1,0 +1,38 @@
+DESCRIPTION: POST a meeting request
+
+METHOD: POST
+
+AUTH: true
+
+EXPECT-RESPONSE: 200
+
+URL: /ucaldav/user/johnsa/Outbox/
+
+DEPTH: 0
+
+HEADER: Originator: mailto:johnsa@mysite.edu
+HEADER: Recipient: mailto:douglm@mysite.edu
+HEADER: Recipient: mailto:testuser01@mysite.edu
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp.//CalDAV Client//EN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTAMP:20060922T200200Z
+ORGANIZER:mailto:johnsa@mysite.edu
+DTSTART:20080822T130000Z
+DTEND:20080822T140000Z
+SUMMARY:Design meeting
+UID:34222-232@example.com
+ATTENDEE;PARTSTAT=ACCEPTED;ROLE=CHAIR;CUTYPE=IND
+ IVIDUAL;CN=Arlen Johnson:mailto:johnsa@mysite.edu
+ATTENDEE;PARTSTAT=NEEDS-ACTION;CUTYPE=IND
+ IVIDUAL;CN=Mike Douglass:mailto:douglm@mysite.edu
+ATTENDEE;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;ROLE=RE
+ Q-PARTICIPANT;CUTYPE=INDIVIDUAL;CN=testuser01:mailto:testuser01@mysite.edu
+END:VEVENT
+END:VCALENDAR

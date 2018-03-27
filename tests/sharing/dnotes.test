@@ -1,0 +1,26 @@
+DESCRIPTION: propfind on user
+
+METHOD: PROPFIND
+
+AUTH: true
+
+DEPTH: 1
+
+URL: /ucaldav/user/douglm/Notifications/
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:propfind xmlns:CS="http://calendarserver.org/ns/"
+            xmlns:D="DAV:"
+            xmlns:I="http://apple.com/ns/ical/"
+            xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:prop>
+    <D:displayname/>
+    <D:resourcetype/>
+    <CS:notificationtype/>
+    <CS:notificationtype/>
+  </D:prop>
+</D:propfind>
+

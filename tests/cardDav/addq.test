@@ -1,0 +1,27 @@
+DESCRIPTION: Try public addrbook query
+
+METHOD: REPORT
+
+AUTH: false
+
+URL: /pubcarddav/directory/users
+
+DEPTH: infinity
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<C:addressbook-query xmlns:D="DAV:"
+                 xmlns:C="urn:ietf:params:xml:ns:carddav">
+  <D:prop>
+    <D:getetag/>
+    <C:address-data/>
+  </D:prop>
+  <C:filter>
+    <C:prop-filter name="FN">
+      <C:text-match collation="i;unicode-casemap"
+                    match-type="contains">dou</C:text-match>
+    </C:prop-filter>
+  </C:filter>
+</C:addressbook-query>

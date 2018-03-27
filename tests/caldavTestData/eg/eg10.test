@@ -1,0 +1,26 @@
+DESCRIPTION: event + attendee
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBDEAzzz1-0yyyyhhhiiijjjkkklllmn.ics
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//OracleCalDAVTest//OracleCalDAVTest
+BEGIN:VEVENT
+UID:OracleCalDAVTest.Meeting11-a yyyyyyyhhhiiijjjkkklllmn
+LOCATION:Seattle bis
+SUMMARY:OracleCalDAVTest.Meeting 1.1bis yyyyyhhhiiijjjkkklllmn
+DTSTART:20090721T190000Z
+DTEND:20090721T200000Z
+ORGANIZER:MAILTO:douglm@mysite.edu
+ATTENDEE:MAILTO:johnsa@mysite.edu
+ATTENDEE:MAILTO:schwag@mysite.edu
+END:VEVENT
+END:VCALENDAR
+

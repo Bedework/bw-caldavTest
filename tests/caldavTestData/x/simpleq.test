@@ -1,0 +1,26 @@
+DESCRIPTION: Simple REPORT
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: /ucaldav/user/douglm
+
+DEPTH: 1
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<C:calendar-query xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:prop xmlns:D="DAV:">
+    <D:getetag/>
+  </D:prop>
+  <C:filter>
+    <C:comp-filter name="VCALENDAR">
+      <C:comp-filter name="VEVENT">
+        <C:time-range start="20110627T000000Z" end="20111031T000000Z" />
+      </C:comp-filter>
+    </C:comp-filter>
+  </C:filter>
+</C:calendar-query>
+

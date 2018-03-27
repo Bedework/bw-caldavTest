@@ -1,0 +1,7 @@
+DESCRIPTION: Vavailability
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: calendar/availtest2.ics

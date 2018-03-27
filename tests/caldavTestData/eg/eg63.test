@@ -1,0 +1,7 @@
+DESCRIPTION: DELETE a collection
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: /ucaldav/user/user01/vtodo-only/

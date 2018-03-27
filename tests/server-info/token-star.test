@@ -1,0 +1,11 @@
+DESCRIPTION: Get location of server info object
+
+METHOD: OPTIONS
+
+AUTH: true
+
+EXPECT-RESPONSE: 200
+
+URL: /ucaldav/
+
+HEADER: server-info-token: *

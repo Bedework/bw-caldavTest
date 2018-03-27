@@ -1,0 +1,33 @@
+DESCRIPTION: vcard in addressbook
+
+METHOD: PUT
+
+AUTH: true
+
+HEADER: IF-None-Match: *
+
+URL: /ucarddav/user/douglm/addressbook/295B41A1-2C4B-4E15-B0CE-942DC5A34B78:ABPerson.vcf
+
+CONTENTTYPE: text/vcard
+
+CONTENT:
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.9//EN
+N:Body;Some;;;
+FN:Some Body
+ORG:RPI;
+EMAIL;type=INTERNET;type=HOME;type=pref:some.body@mysite.edu
+EMAIL;type=INTERNET;type=WORK:some.a.body@example.com
+TEL;type=CELL;type=VOICE;type=pref:1 555 555 5555
+TEL;type=IPHONE;type=CELL;type=VOICE:1 556 456 4567
+ADR;type=HOME;type=pref:;;123 3rd st;troy;ny;12180;USA
+ADR;type=WORK:;;110 8th St;Troy;NY;12180;
+NOTE:It’s some body
+item1.URL;type=pref:http://mypage.mysite.edu
+item1.X-ABLabel:_$!<HomePage>!$_
+BDAY:1954-03-03
+item2.X-ABRELATEDNAMES;type=pref:mama
+item2.X-ABLabel:_$!<Mother>!$_
+X-ABUID:295B41A1-2C4B-4E15-B0CE-942DC5A34B78:ABPerson
+END:VCARD

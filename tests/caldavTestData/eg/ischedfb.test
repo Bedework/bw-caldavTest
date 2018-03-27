@@ -1,0 +1,31 @@
+DESCRIPTION: POST a freebusy request via the ischedule service
+
+METHOD: POST
+
+AUTH: false
+
+EXPECT-RESPONSE: 200
+
+URL: /pubcaldav/ischedule
+
+DEPTH: 0
+
+HEADER: Originator: mailto:user01@example.com
+HEADER: Recipient: mailto:testuser09@mysite.edu
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp.//EN
+METHOD:REQUEST
+BEGIN:VFREEBUSY
+DTSTAMP:20040901T200200Z
+ORGANIZER:mailto:user01@example.com
+DTSTART:20100902T000000Z
+DTEND:20100903T000000Z
+UID:34222-232@example.com
+ATTENDEE;CN=Testuser 09:mailto:testuser09@mysite.edu
+END:VFREEBUSY
+END:VCALENDAR

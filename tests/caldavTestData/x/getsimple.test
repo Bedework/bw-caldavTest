@@ -1,0 +1,8 @@
+DESCRIPTION: Simple GET
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/1302064354993-g.ics
+

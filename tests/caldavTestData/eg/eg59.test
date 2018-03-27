@@ -1,0 +1,37 @@
+DESCRIPTION: 8.4.1 report with named proerties
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: calendar/
+
+DEPTH: 1
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<C:calendar-query xmlns:D="DAV:"
+                  xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:prop>
+    <D:getetag/>
+    <C:calendar-data>
+      <C:comp name="VCALENDAR">
+        <C:comp name="VEVENT">
+          <C:prop name="UID"/>
+          <C:prop name="DTSTART"/>
+          <C:prop name="DTEND"/>
+          <C:prop name="DURATION"/>
+        </C:comp>
+      </C:comp>
+    </C:calendar-data>
+  </D:prop>
+     <C:filter>
+       <C:comp-filter name="VCALENDAR">
+         <C:comp-filter name="VEVENT">
+         </C:comp-filter>
+       </C:comp-filter>
+     </C:filter>
+</C:calendar-query>
+

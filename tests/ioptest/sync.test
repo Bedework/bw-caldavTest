@@ -1,0 +1,21 @@
+DESCRIPTION: sync-report
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/calendar
+
+DEPTH: infinity
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:sync-collection xmlns:D="DAV:">
+  <D:sync-token></D:sync-token>
+  <D:prop>
+    <D:getcontenttype/>
+    <D:getetag/>
+  </D:prop>
+</D:sync-collection>

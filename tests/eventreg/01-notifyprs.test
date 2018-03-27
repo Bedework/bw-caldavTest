@@ -1,0 +1,25 @@
+DESCRIPTION: notify principals of event change
+
+METHOD: POST
+
+AUTH: false
+
+HEADER: X-BEDEWORK-NOTE: localBedework:abcd
+
+URL: /notifyws/
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<BW:eventregCancelled xmlns:D="DAV:"
+                      xmlns:CS="http://calendarserver.org/ns/"
+                      xmlns:BW="http://bedework.org/ns/">
+    <D:href>/public/cals/MainCal/123456.ics</D:href>
+    <D:principal-URL>
+        <D:href>/principals/users/douglm</D:href>
+    </D:principal-URL>
+    <D:principal-URL>
+        <D:href>/principals/users/johnsa</D:href>
+    </D:principal-URL>
+</BW:eventregCancelled>

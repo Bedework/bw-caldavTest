@@ -1,0 +1,19 @@
+DESCRIPTION: Free/busy request
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/calendar/
+
+HEADER: Depth: 1
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<C:free-busy-query xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <C:time-range start="20100901T000000Z"
+                  end="20100931T240000Z"/>
+</C:free-busy-query>
+

@@ -1,0 +1,18 @@
+DESCRIPTION: Section 8.3.1 draft 5 - timerange - auth
+
+EXPECT-RESPONSE: 207
+
+METHOD: POST
+
+HEADER: X-HTTP-Method-Override: REPORT
+
+AUTH: true
+
+URL: calendar/
+
+DEPTH: 1
+
+CONTENTTYPE: text/xml
+
+CONTENTFILE: content/eg64.xml
+

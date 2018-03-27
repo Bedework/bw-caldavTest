@@ -1,0 +1,33 @@
+DESCRIPTION: vcard in addressbook
+
+METHOD: PUT
+
+AUTH: true
+
+URL: addressbook/group002@mysite.edu.ics
+
+CONTENTTYPE: text/vcard
+
+CONTENT:
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//BedeworkTest//BedeworkTest
+UID:group002@mysite.edu
+KIND:group
+FN:My second group
+EMAIL:mygroup2@mysite.edu
+NOTE:This is a group
+MEMBER:mailto:jonbro@berkeley.edu
+MEMBER:mailto:sdaunix@hermes.berkeley.edu
+MEMBER:mailto:rossi@berkeley.edu
+MEMBER:mailto:pnfisher@berkeley.edu
+MEMBER:mailto:jlandahl@berkeley.edu
+MEMBER:mailto:adr@berkeley.edu
+MEMBER:mailto:ct-staff@lists.berkeley.edu
+MEMBER:mailto:CalAgenda-TechSupport@lists.berkeley.edu
+MEMBER:mailto:icrew@berkeley.edu
+MEMBER:mailto:rsr@berkeley.edu
+MEMBER:mailto:rsr@berkeley.edu
+MEMBER:mailto:mmugler@berkeley.edu
+MEMBER:mailto:sarah@socrates.berkeley.edu
+END:VCARD

@@ -1,0 +1,18 @@
+DESCRIPTION: All data for user
+
+METHOD: REPORT
+
+AUTH: true
+
+URL: calendar/
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<D:acl-principal-prop-set xmlns:D="DAV:">
+  <D:prop>
+    <D:displayname/>
+  </D:prop>
+</D:acl-principal-prop-set>

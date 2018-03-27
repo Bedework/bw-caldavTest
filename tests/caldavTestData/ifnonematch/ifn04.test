@@ -1,0 +1,10 @@
+DESCRIPTION: GET with if-none-match
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/ifnonematch01.ics
+
+HEADER: If-None-Match: "20080407T042559Z-0"
+

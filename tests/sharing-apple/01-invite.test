@@ -1,0 +1,19 @@
+DESCRIPTION: send invitation
+
+METHOD: POST
+
+AUTH: true
+
+URL: /ucaldav/user/douglm/shared
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<CS:share xmlns:D="DAV:" xmlns:CS="http://calendarserver.org/ns/">
+    <CS:set>
+        <D:href>mailto:johnsa@mysite.edu</D:href>
+        <CS:summary>My Shared Calendar</CS:summary>
+        <CS:read-write/>
+    </CS:set>
+</CS:share>

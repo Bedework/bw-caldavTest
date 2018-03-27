@@ -1,0 +1,11 @@
+DESCRIPTION: GET webcal for user
+
+METHOD: GET
+
+AUTH: true
+
+EXPECT-RESPONSE: 200
+
+URL: /ucaldav/webcal?calPath=/user/douglm/calendar
+
+HEADER: Accept: text/calendar

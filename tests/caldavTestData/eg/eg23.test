@@ -1,0 +1,33 @@
+DESCRIPTION: REPORT Searching for calendars belonging to a user based on a calendar user address
+
+METHOD: REPORT
+
+AUTH: true
+
+EXPECT-RESPONSE: 207
+
+URL: /ucaldav/principals/
+
+DEPTH: 0
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:principal-property-search xmlns:D="DAV:"
+            xmlns:C="urn:ietf:params:xml:ns:caldav">
+  <D:property-search>
+    <D:prop>
+      <C:calendar-user-address-set/>
+    </D:prop>
+    <D:match>mailto:douglm@mysite.edu</D:match>
+  </D:property-search>
+  <D:prop>
+    <C:calendar-home-URL/>
+    <C:calendar-home-set/>
+    <C:calendar-user-address-set/>
+    <C:schedule-inbox-URL/>
+    <C:schedule-outbox-URL/>
+    <D:displayname/>
+  </D:prop>
+</D:principal-property-search>

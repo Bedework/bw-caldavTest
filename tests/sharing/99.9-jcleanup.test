@@ -1,0 +1,8 @@
+DESCRIPTION: send invitation
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: /ucaldav/user/johnsa/notification/
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<D:principal-match xmlns:D="DAV:"
+                   xmlns:C="urn:ietf:params:xml:ns:caldav"
+                   xmlns:CS="http://calendarserver.org/ns/" >
+  <D:self/>
+  <D:prop>
+    <D:resourcetype />
+    <D:principal-URL />
+    <CS:notification-URL />
+    <C:calendar-home-set />
+    <D:current-user-principal />
+  </D:prop>
+</D:principal-match>

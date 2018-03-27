@@ -1,0 +1,8 @@
+DESCRIPTION: Simple GET with a space in the uri
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/check-xprop3.ics
+

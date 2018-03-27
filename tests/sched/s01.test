@@ -1,0 +1,26 @@
+DESCRIPTION: event + 2 attendees
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/a01234567890123456789@example.com.ics
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Bedework//BedeworkTest
+BEGIN:VEVENT
+UID:a01234567890123456789@example.com
+LOCATION:My room
+SUMMARY:Test1 messing about with attendees
+DTSTART:20110401T190000Z
+DTSTART:20110401T200000Z
+ORGANIZER:MAILTO:douglm@mysite.edu
+ATTENDEE:MAILTO:douglm@mysite.edu
+ATTENDEE:MAILTO:johnsa@mysite.edu
+END:VEVENT
+END:VCALENDAR
+

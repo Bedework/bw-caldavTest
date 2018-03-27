@@ -1,0 +1,30 @@
+DESCRIPTION: POST a meeting request
+
+METHOD: POST
+
+AUTH: true
+
+EXPECT-RESPONSE: 200
+
+URL: /ucaldav/user/douglm/Outbox/
+
+DEPTH: 0
+
+HEADER: Originator: mailto:douglm@mysite.edu
+HEADER: Recipient: mailto:johnsa@mysite.edu
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp.//CalDAV Client//EN
+METHOD:REPLY
+BEGIN:VEVENT
+DTSTAMP:20060922T200200Z
+ORGANIZER:mailto:johnsa@mysite.edu
+UID:34222-232@example.com
+ATTENDEE;PARTSTAT=ACCEPTED;ROLE=CHAIR;CUTYPE=IND
+ IVIDUAL;CN=Mike Douglass:mailto:douglm@mysite.edu
+END:VEVENT
+END:VCALENDAR

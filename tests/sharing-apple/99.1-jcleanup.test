@@ -1,0 +1,8 @@
+DESCRIPTION: send invitation
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: /ucaldav/user/johnsa/ff808081-467e3bef-0146-7e3eb08b-0000000e/
+
