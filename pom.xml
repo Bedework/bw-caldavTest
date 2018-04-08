@@ -13,7 +13,7 @@
 		<maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
 		<!-- Bedework Versions -->
-    <bw-util.version>4.0.17-SNAPSHOT</bw-util.version>
+    <bw-util.version>4.0.18</bw-util.version>
 
 		<!-- Third Party Library Versions -->
     <http-client.version>4.5.3</http-client.version>
