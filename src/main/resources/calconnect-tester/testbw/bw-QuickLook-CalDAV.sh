@@ -20,9 +20,9 @@
 # Runs a subset of tests as a quick check that the server is functional.
 #
 
-# Ensure cded into directory containing this script
+# Run this from the quickstart directory
 
-currentDir=`pwd`
+qsDir=`pwd`
 
 testerDir="/Users/mike/IdeaProjects/caldavtester"
 
@@ -30,13 +30,15 @@ outDir="/tmp/cdtester"
 
 cd $testerDir
 
-mkdir -f $outDir
+mkdir -p $outDir
 
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-python testcaldav.py $@ --print-details-onfail -s $currentDir/bwserverinfo.xml -o $outDir/cdt.txt \
+pwd
+
+./venv/bin/python2.7 testcaldav.py $@ --print-details-onfail -s $qsDir/bw-caldavTest/src/main/resources/calconnect-tester/testbw/bwserverinfo.xml -o $outDir/cdt.txt \
 	CalDAV/caldavIOP.xml \
 	CalDAV/errors.xml \
 	CalDAV/get.xml \
