@@ -45,6 +45,8 @@
 		<feature>Extended MKCOL</feature>						<!-- Extended MKCOL -->
     <!-- NOTBW <feature>Sync invalid token</feature>				 Sync report can recognize invalid tokens 
         Bedework uses the lastmod as a sync token - need to check if the token matches ANY entity. -->
+    <!-- NOTBW <feature>timezone-in-calendar-query</feature>
+                  This may be difficult and who uses it?  -->
 
 		<!-- ACL related -->
 		<feature>ACL Method</feature>							<!-- ACL method -->
