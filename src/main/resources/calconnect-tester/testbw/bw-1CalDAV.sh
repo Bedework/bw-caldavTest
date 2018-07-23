@@ -17,8 +17,11 @@
 # limitations under the License.
 ##
 #
-# Runs a subset of tests as a quick check that the server is functional.
+# Runs a single caldav test.
 #
+
+echo "$0"
+echo "$1"
 
 # Run this from the quickstart directory
 
@@ -38,22 +41,8 @@ pip install -r requirements.txt
 
 pwd
 
-# This generates a lot of failures - many just wrong status
-	CalDAV/errors.xml \
+cmd="./venv/bin/python2.7 testcaldav.py --print-details-onfail -s $qsDir/bw-caldavTest/src/main/resources/calconnect-tester/testbw/bwserverinfo.xml -o $outDir/cdt.txt \
+	CalDAV/${1}.xml"
 
-./venv/bin/python2.7 testcaldav.py $@ --print-details-onfail -s $qsDir/bw-caldavTest/src/main/resources/calconnect-tester/testbw/bwserverinfo.xml -o $outDir/cdt.txt \
-	CalDAV/caldavIOP.xml \
-	CalDAV/get.xml \
-	CalDAV/ical-client.xml \
-	CalDAV/propfind.xml \
-	CalDAV/put.xml \
-	CalDAV/reports.xml \
-	CalDAV/sharing-calendars.xml \
-	CalDAV/sharing-create.xml \
-	CalDAV/sharing-feature.xml \
-	CalDAV/sharing-invites.xml \
-	CalDAV/sharing-notification-sync.xml \
-	CalDAV/sharing-sync.xml
-
-
-grep "scripts\.tests\|Suite\|FAILED" $outDir/cdt.txt
+echo $cmd
+$cmd
