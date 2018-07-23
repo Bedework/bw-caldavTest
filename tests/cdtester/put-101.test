@@ -1,0 +1,22 @@
+DESCRIPTION: task for query
+
+METHOD: PUT
+
+AUTH: true
+
+URL: /ucaldav/user/user01/tasks/101.ics
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+PRODID:-//Example Inc.//Example Calendar//EN
+VERSION:2.0
+BEGIN:VTODO
+DTSTAMP:20060101T145240Z
+STATUS:NEEDS-ACTION
+SUMMARY:Task 1
+UID:task01@example.local
+END:VTODO
+END:VCALENDAR

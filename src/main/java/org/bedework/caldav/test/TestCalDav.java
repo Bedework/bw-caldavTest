@@ -397,25 +397,29 @@ public class TestCalDav {
                  r.getContentType());
 
       try (CloseableHttpResponse resp = cio.execute(req)) {
-        HttpEntity ent = resp.getEntity();
-        InputStream in = ent.getContent();
+        final HttpEntity ent = resp.getEntity();
 
-        if (in != null) {
-          readContent(in, ent.getContentLength(),
-                      ContentType.getOrDefault(ent).getCharset().toString());
+        if (ent != null) {
+          final InputStream in = ent.getContent();
+
+          if (in != null) {
+            readContent(in, ent.getContentLength(),
+                        ContentType.getOrDefault(ent).getCharset()
+                                   .toString());
+          }
         }
 
         final int status = HttpUtil.getStatus(resp);
 
-        int expected = r.getExpectedResponse();
+        final int expected = r.getExpectedResponse();
 
-        boolean ok = (expected < 0) || (expected == status);
+        final boolean ok = (expected < 0) || (expected == status);
 
         results.add(new TestResult(tname, ok, status, false, null));
 
         return ok;
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       results.add(new TestResult(tname, false, 0, true, t.getMessage()));
       t.printStackTrace();
       return false;
