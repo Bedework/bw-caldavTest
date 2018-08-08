@@ -84,21 +84,25 @@ pip install -r requirements.txt
 # ====================================================================
 
 usage() {
-  echo "$0 <options1> <options2> "
-  echo "<options1> is zero or more of: "
-  echo "\t -sc | --serverconfig <name>\t\t the server config file"
-  echo "\t -o | --out <path>\t\t an output file"
-  echo ""
-  echo "<options2> is one or more of the following "
-  echo "           which will be executed immediately: "
-  echo "\t -ql | --quicklook\t\t\t run the quicklook tests"
-  echo "\t -c | --current\t\t\t run the current tests"
-  echo "\t -a | --all\t\t\t run all tests"
-  echo "\t -t | --tests <names>\t\t\t run named tests (must be last)"
-  echo ""
-  echo "e.g "
-  echo "  $0 -sc myconfig.xml --quicklook -t mytest.xml"
-  echo "will run the quicklook then run the test mytest.xml"
+  printf '\n'
+  printf '\n'
+  printf '$0 <options1> <options2> \n'
+  printf '<options1> is zero or more of: \n'
+  printf '\t -sc | --serverconfig <name>\t the server config file\n'
+  printf '\t -o | --out <path>\t\t an output file\n'
+  printf '\n'
+  printf '<options2> is one or more of the following \n'
+  printf '           which will be executed immediately: \n'
+  printf '\t -ql | --quicklook\t\t run the quicklook tests\n'
+  printf '\t -c | --current\t\t\t run the current tests\n'
+  printf '\t -a | --all\t\t\t run all tests\n'
+  printf '\t -t | --tests <names>\t\t run named tests (must be last)\n'
+  printf '\n'
+  printf 'e.g \n'
+  printf '  $0 -sc myconfig.xml --quicklook -t mytest.xml\n'
+  printf 'will run the quicklook then run the test mytest.xml\n'
+  printf '\n'
+  printf '\n'
 }
 
 rm -f $outfile
@@ -107,13 +111,9 @@ pwd
 
 while [ "$1" != "" ]
 do
+  echo "parameter is -->$1<--"
   case $1
   in
-    -usage | -help | -? | ?)
-      usage
-      exit
-      ;;
-
     -conf)
       shift
       serverinfo="$1"
@@ -148,7 +148,14 @@ do
       exit
       ;;
 
+    -usage | -help | -? | ?)
+      usage
+      exit
+      ;;
+
     *)
+      echo "Unrecognized option $1"
+      echo
       usage
       exit 1
       ;;
