@@ -43,7 +43,8 @@
 		<feature>COPY Method</feature>							<!-- COPY method -->
 		<feature>MOVE Method</feature>							<!-- MOVE method -->
 		<feature>Extended MKCOL</feature>						<!-- Extended MKCOL -->
-    <!-- NOTBW <feature>Sync invalid token</feature>				 Sync report can recognize invalid tokens 
+
+    <!-- NOTBW <feature>Sync invalid token</feature>				 Sync report can recognize invalid tokens
         Bedework uses the lastmod as a sync token - need to check if the token matches ANY entity. -->
     <!-- NOTBW <feature>timezone-in-calendar-query</feature>
                   This may be difficult and who uses it?  -->
@@ -129,7 +130,7 @@
     <!-- NOTBW <feature>timerange-low-limit</feature>	-->		<!-- Time-range only valid one year back -->
     <!-- NOTBW <feature>timerange-high-limit</feature> -->			<!-- Time-range only valid 5 years ahead -->
 		<feature>timezones-by-reference</feature>		<!-- Timezones by reference enabled -->
-		<feature>timezone-service</feature>				<!-- Timezone service extension for Wiki -->
+    <!-- NOTBW <feature>timezone-service</feature>				< ! - - Timezone service extension for Wiki -->
 		<feature>timezone-std-service</feature>			<!-- Timezone standard service extension -->
 		<!-- <feature>trash-collection</feature> -->  			<!-- Trash collection enabled -->
     <!-- NOTBW <feature>travel-time-busy</feature> -->			<!-- Travel time appears as busy -->
@@ -478,7 +479,8 @@
 			<!-- user name -->
 			<substitution>
 				<key>$username%d:</key>
-				<value>User %02d</value>
+        <value>$userid%d:@mysite.edu</value>
+				<!--<value>User %02d</value>-->
 			</substitution>
 			<!-- user name URI encoded -->
 			<substitution>
@@ -884,6 +886,9 @@
 		</substitution>
 
 	</substitutions>
+
+    <calendardatafilter>PARTSTAT=NEEDS-ACTION</calendardatafilter>
+    <calendardatafilter>TRIGGER:RELATED=START</calendardatafilter>
 
     <calendardatafilter>ATTENDEE:X-CALENDARSERVER-DTSTAMP</calendardatafilter>
     <calendardatafilter>ATTENDEE:X-CALENDARSERVER-AUTO</calendardatafilter>
