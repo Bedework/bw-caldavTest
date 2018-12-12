@@ -13,11 +13,13 @@
 		<maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
 		<!-- Bedework Versions -->
-    <bw-util.version>4.0.18</bw-util.version>
+    <bw-util.version>4.0.20-SNAPSHOT</bw-util.version>
+    <bw-util-logging.version>4.0.0-SNAPSHOT</bw-util-logging.version>
 
 		<!-- Third Party Library Versions -->
     <http-client.version>4.5.3</http-client.version>
     <http-core.version>4.4.8</http-core.version>
+
 		<log4j.version>1.2.15</log4j.version>
 	</properties>
 
@@ -86,6 +88,12 @@
       <groupId>org.bedework</groupId>
       <artifactId>bw-util-http</artifactId>
       <version>${bw-util.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.bedework</groupId>
+      <artifactId>bw-util-logging</artifactId>
+      <version>${bw-util-logging.version}</version>
     </dependency>
 
     <dependency>

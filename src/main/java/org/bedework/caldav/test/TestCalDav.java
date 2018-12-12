@@ -19,6 +19,7 @@
 package org.bedework.caldav.test;
 
 import org.bedework.util.http.HttpUtil;
+import org.bedework.util.logging.SLogged;
 import org.bedework.util.misc.Util;
 
 import org.apache.http.Header;
@@ -52,9 +53,7 @@ import static org.bedework.util.http.HttpUtil.setContent;
  *
  * <p>Also occasionally used to test other components
  */
-public class TestCalDav {
-  private static boolean debug = true;
-
+public class TestCalDav implements SLogged {
   private static String host = "localhost";
 
   private static int port = 8080;
@@ -270,11 +269,7 @@ public class TestCalDav {
     }
 
     for (int i = 0; i < args.length; i++) {
-      if (args[i].equals("-debug")) {
-        debug = true;
-      } else if (args[i].equals("-ndebug")) {
-        debug = false;
-      } else if ("-list".equals(args[i])) {
+      if ("-list".equals(args[i])) {
         list = true;
       } else if (argpar("-dir", args, i)) {
         i++;
@@ -431,7 +426,7 @@ public class TestCalDav {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     int len = 0;
 
-    if (debug) {
+    if (SLogged.debug()) {
       System.out.println("Read content - expected=" + expectedLen);
     }
 
