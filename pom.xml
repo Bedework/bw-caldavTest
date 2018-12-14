@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bedework</groupId>
   <artifactId>bw-caldavTest</artifactId>
-  <version>4.0.0</version>
+  <version>4.0.0-SNAPSHOT</version>
   <description>A simple DAV tester</description>
   <url>https://github.com/Bedework/bw-caldavTest</url>
 
@@ -39,7 +39,7 @@
     <connection>scm:git:git@github.com:Bedework/bw-webdav.git</connection>
     <developerConnection>scm:git:git@github.com:Bedework/bw-webdav.git</developerConnection>
     <url>https://github.com/Bedework/bw-webdav</url>
-    <tag>bw-caldavTest-4.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
