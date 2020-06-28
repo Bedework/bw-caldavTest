@@ -1,0 +1,9 @@
+DESCRIPTION: get event
+
+METHOD: GET
+
+HEADER: ACCEPT: application/jscalendar+json
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBDErecur-1.ics

@@ -44,6 +44,7 @@ import java.io.InputStream;
 import java.io.LineNumberReader;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeSet;
 
 import static org.bedework.util.http.HttpUtil.findMethod;
@@ -180,10 +181,8 @@ public class TestCalDav {
 
         if (testListName != null) {
           File testList = new File(dirName + "/" + testListName);
-          FileReader frdr = null;
 
-          try {
-            frdr = new FileReader(testList);
+          try (FileReader frdr = new FileReader(testList)) {
             LineNumberReader lnr = new LineNumberReader(frdr);
 
             do {
@@ -201,24 +200,14 @@ public class TestCalDav {
 
               tests.add(new File(dirName + "/" + ln + ".test"));
             } while (true);
-          } finally {
-            if (frdr != null) {
-              try {
-                frdr.close();
-              } catch (Throwable t) {}
-            }
           }
         } else {
           File[] dirfiles = dir.listFiles(new TestFilter());
-          TreeSet<File> ts = new TreeSet<File>();
+          TreeSet<File> ts = new TreeSet<>();
 
-          for (int i = 0; i < dirfiles.length; i++) {
-            ts.add(dirfiles[i]);
-          }
+          Collections.addAll(ts, dirfiles);
 
-          for (File f: ts) {
-            tests.add(f);
-          }
+          tests.addAll(ts);
         }
 
         for (File testfile: tests) {
@@ -337,7 +326,7 @@ public class TestCalDav {
     System.out.println("            Just list test file[s]");
     System.out.println("       -test testname");
     System.out.println("            run given test [in given directory]");
-    System.out.println("");
+    System.out.println();
     System.out.println("For example");
     System.out.println("   -dir mytestdir");
     System.out.println("             Run all the tests in given directory");
@@ -446,7 +435,7 @@ public class TestCalDav {
 
       if (ich == '\n') {
         if (hadLf) {
-          System.out.println("");
+          System.out.println();
           hadLf = false;
           hadCr = false;
         } else {
@@ -454,7 +443,7 @@ public class TestCalDav {
         }
       } else if (ich == '\r') {
         if (hadCr) {
-          System.out.println("");
+          System.out.println();
           hadLf = false;
           hadCr = false;
         } else {
