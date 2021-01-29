@@ -16,9 +16,12 @@ VERSION:2.0
 BEGIN:VEVENT
 CATEGORIES:APPOINTMENT,EDUCATION
 CATEGORIES:MEETING
+CONCEPT:http://example.com/event-types/arts/music
+CONCEPT:http://example.com/performance-types/arts/live
 DTSTAMP:20200522T142047Z
 DTSTART;TZID=America/New_York:20200622T120000
 DURATION:PT1H
+DESCRIPTION:event with some categories.
 SUMMARY:event with categories
 UID:6252D6C40A8308BFE25BBEFcats-1
 END:VEVENT
