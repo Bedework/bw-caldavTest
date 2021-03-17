@@ -1,0 +1,7 @@
+DESCRIPTION: get event
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/5dayrecurtest4.ics
