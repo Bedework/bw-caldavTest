@@ -1,0 +1,7 @@
+DESCRIPTION: get event
+
+METHOD: GET
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBEFattendee-1.ics

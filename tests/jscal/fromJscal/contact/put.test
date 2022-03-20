@@ -1,0 +1,37 @@
+DESCRIPTION: Simple event with contact
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBEFcontact-1.ics
+
+CONTENTTYPE: application/jscalendar+json
+
+CONTENT:
+{
+  "@type": "Event",
+  "participants": {
+    "40288117-7f994a9a-017f-99520f0b-00000001": {
+      "@type": "Participant",
+      "roles": {
+        "contact": true
+      },
+      "name": "Jim Dolittle",
+      "description": "Jim Dolittle, ABC Industries,+1-919-555-1234",
+      "links": {
+        "1": {
+          "@type": "Link",
+          "href": "ldap://example.com:6666/o=ABC%20Industries,c=US???(cn=Jim%20Dolittle)",
+          "rel": "alternate"
+        }
+      }
+    }
+  },
+  "created": "2022-03-18T03:07:47Z",
+  "start": "2020-06-22T12:00:00",
+  "timeZone": "America/New_York",
+  "duration": "PT1H",
+  "title": "event with contact",
+  "uid": "6252D6C40A8308BFE25BBEFcontact-1"
+}
