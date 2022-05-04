@@ -1,0 +1,56 @@
+DESCRIPTION: Simple event with attendee
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBEFsimple-alarms-1.ics
+
+CONTENTTYPE: application/jscalendar+json
+
+CONTENT:
+{
+  "@type": "Group",
+  "prodId": "//Bedework.org//BedeWork V3.14//EN",
+  "entries": [
+    {
+      "@type": "Event",
+      "alerts": {
+        "1": {
+          "@type": "Alert",
+          "action": "display",
+          "trigger": {
+            "@type": "AbsoluteTrigger",
+            "when": "2022-05-08T12:00:00Z"
+          }
+        },
+        "2": {
+          "@type": "Alert",
+          "action": "display",
+          "description": "Breakfast meeting with executive\nteam at 8:30 AM EST.",
+          "trigger": {
+            "@type": "OffsetTrigger",
+            "offset": "-PT30M"
+          }
+        },
+        "3": {
+          "@type": "Alert",
+          "action": "email",
+          "title": "*** REMINDER: SEND AGENDA FOR WEEKLY STAFF MEETING ***",
+          "description": "A draft agenda needs to be sent out to the attendees to the weekly managers meeting (MGR-LIST). Attached is a pointer the document template for the agenda file.",
+          "trigger": {
+            "@type": "OffsetTrigger",
+            "offset": "-P-2D",
+            "relativeTo": "end"
+          }
+        }
+      },
+      "created": "2022-05-02T20:04:12Z",
+      "start": "2022-06-22T12:00:00",
+      "timeZone": "America/New_York",
+      "duration": "PT1H",
+      "title": "event with alarms",
+      "uid": "6252D6C40A8308BFE25BBEFsimple-alarms-1"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+DESCRIPTION: Cleanup after test
+
+EXPECT-RESPONSE: 204
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBEFeverything-1.ics
+
