@@ -18,6 +18,7 @@
 */
 package org.bedework.caldav.test;
 
+import org.bedework.util.args.Args;
 import org.bedework.util.http.HttpUtil;
 import org.bedework.util.logging.BwLogger;
 import org.bedework.util.misc.Util;
@@ -43,6 +44,8 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.LineNumberReader;
 import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TreeSet;
@@ -69,14 +72,15 @@ public class TestCalDav {
 
   private static String urlPrefix;
 
-  private static String fileRepository = "../../../../tests/caldavTestData/eg/";
-
   private static boolean list = false;
 
   /* Name of file containing list of test names - located in dir */
   private static String testListName;
 
-  private static String dirName = fileRepository;
+  private static String dirName;
+
+  private static String resourcedirName;
+  private static Path resourcedirPath;
 
   private static String fileName;
 
@@ -169,7 +173,7 @@ public class TestCalDav {
       File dir = new File(dirName);
 
       if (!dir.isDirectory()) {
-        System.out.println(dirName + "is not a directory.");
+        System.out.println(dirName + " is not a directory.");
         usage();
         return;
       }
@@ -215,7 +219,8 @@ public class TestCalDav {
           String tname = fname.substring(0, fname.length() - 5);
 
           Req r = new Req(user, pw, urlPrefix,
-                          testfile.getCanonicalPath());
+                          testfile.getCanonicalPath(),
+                          resourcedirPath);
 
           System.out.println("Test " + tname + ": " + r.description);
 
@@ -225,7 +230,8 @@ public class TestCalDav {
         }
       } else {
         Req r = new Req(user, pw, urlPrefix,
-                        dirName + "/" + fileName + ".test");
+                        dirName + "/" + fileName + ".test",
+                        resourcedirPath);
 
         System.out.println("Test " + fileName + ": " + r.description);
         if (!list) {
@@ -260,40 +266,73 @@ public class TestCalDav {
       return false;
     }
 
-    for (int i = 0; i < args.length; i++) {
-      if ("-list".equals(args[i])) {
+    final Args pargs = new Args(args);
+
+    while (pargs.more()) {
+      if (pargs.ifMatch("-list")) {
         list = true;
-      } else if (argpar("-dir", args, i)) {
-        i++;
-        dirName = args[i];
-      } else if (argpar("-urlPrefix", args, i)) {
-        i++;
-        urlPrefix = args[i];
-      } else if (argpar("-host", args, i)) {
-        i++;
-        host = args[i];
-      } else if (argpar("-port", args, i)) {
-        i++;
-        port = Integer.parseInt(args[i]);
-      } else if (args[i].equals("-secure")) {
-        secure = true;
-      } else if (argpar("-user", args, i)) {
-        i++;
-        user = args[i];
-      } else if (argpar("-pw", args, i)) {
-        i++;
-        pw = args[i];
-      } else if (argpar("-testlist", args, i)) {
-        i++;
-        testListName = args[i];
-      } else if ((fileName == null) && argpar("-test", args, i)) {
-        i++;
-        fileName = args[i];
-      } else {
-        System.out.println("Illegal argument: " + args[i]);
-        usage();
-        return false;
+        continue;
       }
+
+      if (pargs.ifMatch("-dir")) {
+        dirName = pargs.next();
+        continue;
+      }
+
+      if (pargs.ifMatch("-resourcedir")) {
+        resourcedirName = pargs.next();
+        resourcedirPath = Paths.get(resourcedirName);
+        if (!resourcedirPath.toFile().isDirectory()) {
+          System.out.println(resourcedirName + " is not a directory");
+          return false;
+        }
+        continue;
+      }
+
+      if (pargs.ifMatch("-urlPrefix")) {
+        urlPrefix = pargs.next();
+        continue;
+      }
+
+      if (pargs.ifMatch("-host")) {
+        host = pargs.next();
+        continue;
+      }
+
+      if (pargs.ifMatch("-port")) {
+        port = Integer.parseInt(pargs.next());
+        continue;
+      }
+
+      if (pargs.ifMatch("-secure")) {
+        secure = true;
+        continue;
+      }
+
+      if (pargs.ifMatch("-user")) {
+        user = pargs.next();
+        continue;
+      }
+
+      if (pargs.ifMatch("-pw")) {
+        pw = pargs.next();
+        continue;
+      }
+
+      if (pargs.ifMatch("-testlist")) {
+        testListName = pargs.next();
+        continue;
+      }
+
+      if ((fileName == null) && pargs.ifMatch("-test")) {
+        fileName = pargs.next();
+        continue;
+      }
+
+      System.out.println("Illegal argument: " +
+                                 pargs.current());
+      usage();
+      return false;
     }
 
     return true;

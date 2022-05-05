@@ -1,14 +1,3 @@
-DESCRIPTION: Simple event with categories
-
-METHOD: PUT
-
-AUTH: true
-
-URL: calendar/6252D6C40A8308BFE25BBEFcats-1.ics
-
-CONTENTTYPE: application/jscalendar+json
-
-CONTENT:
 {
   "@type": "Group",
   "prodId": "//Bedework.org//BedeWork V3.14//EN",

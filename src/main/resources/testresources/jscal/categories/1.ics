@@ -1,14 +1,3 @@
-DESCRIPTION: Simple event with categories
-
-METHOD: PUT
-
-AUTH: true
-
-URL: calendar/6252D6C40A8308BFE25BBEFcats-1.ics
-
-CONTENTTYPE: text/calendar
-
-CONTENT:
 BEGIN:VCALENDAR
 CALSCALE:GREGORIAN
 PRODID:-//Bedework//EN

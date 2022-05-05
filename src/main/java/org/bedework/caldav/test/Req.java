@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.LineNumberReader;
+import java.nio.file.Path;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -73,12 +74,16 @@ class Req {
   static final String ctypeHdr = "CONTENTTYPE: ";
   static final String contHdr = "CONTENT:";
   static final String contFileHdr = "CONTENTFILE: ";
+  static final String resFileHdr = "RESOURCEFILE: ";
 
   private static final DateFormat isoDateTimeUTCFormat =
       new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
 
-  Req(final String user, final String pw, final String urlPrefix,
-      final String testFileName) throws Throwable {
+  Req(final String user,
+      final String pw,
+      final String urlPrefix,
+      final String testFileName,
+      final Path resourcedirPath) throws Throwable {
     this.urlPrefix = urlPrefix;
 
     FileReader frdr = null;
@@ -86,15 +91,15 @@ class Req {
     boolean auth = false;
 
     try {
-      File testFile = new File(testFileName);
+      final File testFile = new File(testFileName);
       frdr = new FileReader(testFile);
-      LineNumberReader lnr = new LineNumberReader(frdr);
+      final LineNumberReader lnr = new LineNumberReader(frdr);
 
       List<Header> headers = null;
       Collection<String> cont = null;
 
       do {
-        String ln = lnr.readLine();
+        final String ln = lnr.readLine();
 
         if (ln == null) {
           break;
@@ -132,16 +137,21 @@ class Req {
             headers = new ArrayList<>();
           }
 
-          String depth = ln.substring(depthHdr.length());
-          if ("0".equals(depth)) {
-            headers.add(DavUtil.depth0);
-          } else if ("1".equals(depth)) {
-            headers.add(DavUtil.depth1);
-          } else if ("infinity".equals(depth)) {
-            headers.add(DavUtil.depthinf);
-          } else {
-            System.out.println("Bad depth at line " + ln);
-            throw new Exception("Bad test data file " + testFileName);
+          final String depth = ln.substring(depthHdr.length());
+          switch (depth) {
+            case "0":
+              headers.add(DavUtil.depth0);
+              break;
+            case "1":
+              headers.add(DavUtil.depth1);
+              break;
+            case "infinity":
+              headers.add(DavUtil.depthinf);
+              break;
+            default:
+              System.out.println("Bad depth at line " + ln);
+              throw new Exception(
+                      "Bad test data file " + testFileName);
           }
         } else if (ln.startsWith(authHdr)) {
           /*
@@ -164,8 +174,8 @@ class Req {
             headers = new ArrayList<>();
           }
 
-          String hdr = ln.substring(hdrHdr.length());
-          int colonPos = hdr.indexOf(": ");
+          final String hdr = ln.substring(hdrHdr.length());
+          final int colonPos = hdr.indexOf(": ");
           if (colonPos < 0) {
             throw new Exception("Bad header in test data file " + testFileName);
           }
@@ -177,13 +187,22 @@ class Req {
                 CONTENTTYPE
            */
           contentType = ln.substring(ctypeHdr.length());
+        } else if (ln.startsWith(resFileHdr)) {
+          fromFile = true;
+          final var fname = ln.substring(resFileHdr.length());
+
+          final File contentFile =
+                  resourcedirPath.resolve(fname).toFile();
+
+          contentFileName = contentFile.getAbsolutePath();
+          System.out.println("Load content from file " + contentFileName);
         } else if (ln.startsWith(contFileHdr)) {
           /*
                 CONTENTFILE
            */
           fromFile = true;
           contentFileName = ln.substring(contFileHdr.length());
-          File contentFile = new File(contentFileName);
+          final File contentFile = new File(contentFileName);
 
           if (!contentFile.isAbsolute()) {
             contentFileName = testFile.getParentFile().getAbsolutePath() + "/" + contentFileName;
