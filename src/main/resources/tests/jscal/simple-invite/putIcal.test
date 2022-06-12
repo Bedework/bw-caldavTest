@@ -19,8 +19,8 @@ DTSTART;TZID=America/New_York:20200522T120000
 DURATION:PT1H
 RRULE:FREQ=DAILY;COUNT=8
 SUMMARY:recurring daily 8 times
-UID:6252D6C40A8308BFE25BBDEsimpleInvite-1.ics
+UID:6252D6C40A8308BFE25BBDEsimpleInvite-1
 ORGANIZER:mailto:douglm@mysite.edu
-ATTENDEE:mailto:user1@mysite.edu
+ATTENDEE;EMAIL="user1@mysite.edu":mailto:user1@mysite.edu
 END:VEVENT
 END:VCALENDAR
