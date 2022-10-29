@@ -281,11 +281,6 @@ public class TestCalDav {
 
       if (pargs.ifMatch("-resourcedir")) {
         resourcedirName = pargs.next();
-        resourcedirPath = Paths.get(resourcedirName);
-        if (!resourcedirPath.toFile().isDirectory()) {
-          System.out.println(resourcedirName + " is not a directory");
-          return false;
-        }
         continue;
       }
 
@@ -332,6 +327,16 @@ public class TestCalDav {
       System.out.println("Illegal argument: " +
                                  pargs.current());
       usage();
+      return false;
+    }
+
+    if (resourcedirName == null) {
+      resourcedirName = dirName;
+    }
+
+    resourcedirPath = Paths.get(resourcedirName);
+    if (!resourcedirPath.toFile().isDirectory()) {
+      System.out.println(resourcedirName + " is not a directory");
       return false;
     }
 

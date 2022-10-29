@@ -1,4 +1,4 @@
-DESCRIPTION: Simple event with categories
+DESCRIPTION: Event with vlocations
 
 METHOD: PUT
 
@@ -8,4 +8,4 @@ URL: calendar/6252D6C40A8308BFE25BBEFloc-1.ics
 
 CONTENTTYPE: text/calendar
 
-RESOURCEFILE: jscal/location/1.ics
+RESOURCEFILE: 1.ics
