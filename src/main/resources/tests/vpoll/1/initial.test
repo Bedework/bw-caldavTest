@@ -1,0 +1,11 @@
+DESCRIPTION: Simple vpoll with 3 events
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/vpoll04-1234567890.ics
+
+CONTENTTYPE: text/calendar
+
+RESOURCEFILE: vpoll/1/initial.ics
