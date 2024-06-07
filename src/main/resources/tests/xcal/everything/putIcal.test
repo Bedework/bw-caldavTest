@@ -1,0 +1,77 @@
+DESCRIPTION: Event with everything
+
+METHOD: PUT
+
+AUTH: true
+
+URL: calendar/6252D6C40A8308BFE25BBEFxcaleverything-1.ics
+
+CONTENTTYPE: text/calendar
+
+CONTENT:
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+PRODID:-//Bedework//EN
+VERSION:2.0
+BEGIN:VEVENT
+CATEGORIES:APPOINTMENT,EDUCATION
+CATEGORIES:MEETING
+COLOR:turquoise
+CONCEPT:http://example.com/event-types/arts/music
+CONCEPT:http://example.com/performance-types/arts/live
+DTSTAMP:20200522T142047Z
+DTSTART;TZID=America/New_York:20240607T173000
+DURATION:PT1H
+EXDATE;TZID=America/New_York:20240906T173000
+RDATE;TZID=America/New_York:20240905T173000
+RRULE:FREQ=MONTHLY;UNTIL=20241101T173000Z;INTERVAL=1;BYDAY=FR;BYSETPOS=1
+SUMMARY:event with alarms
+UID:6252D6C40A8308BFE25BBEFxcaleverything-1
+X-BEDEWORK-IMAGE:https://pr-236-artgallery-yale-edu.pantheonsite.io/sites/d
+ efault/files/styles/bedework_image/public/2024-02/2024-Furniture%20Study%2
+ 0Highlights%20Tours.jpg?itok=6cQh16Gc
+URL;TYPE=URI:https://pr-236-artgallery-yale-edu.pantheonsite.io/calendar/ev
+ ents/person-program-furniture-study-highlights-tour-5
+X-YALE-SPEAKERPERFORMER:American Decorative Arts staff
+CONTACT;ALTREP="http://artgallery.yale.edu";X-BEDEWORK-UID=2c9cb3cd-22e615c
+ f-0122-e686473c-000000fc:Yale University Art Gallery
+X-BEDEWORK-ALIAS;X-BEDEWORK-PARAM-DISPLAYNAME=Libraries\, Museums & Galleri
+ es;X-BEDEWORK-PARAM-PATH=/public/Aliases/Event Category/Libraries Museums
+ Galleries;X-BEDEWORK-PARAM-ALIASPATH=/public/cals:/user/agrp_yuag/Event Ca
+ tegory/Libraries Museums Galleries
+X-BEDEWORK-ALIAS;X-BEDEWORK-PARAM-DISPLAYNAME=Arts & Humanities;X-BEDEWORK-
+ PARAM-PATH=/public/Aliases/Event Category/Arts and Humanities;X-BEDEWORK-P
+ ARAM-ALIASPATH=/public/cals:/user/agrp_yuag/Event Category/Arts and Humani
+ ties
+X-BEDEWORK-ALIAS;X-BEDEWORK-PARAM-DISPLAYNAME=General Public;X-BEDEWORK-PAR
+ AM-PATH=/public/Aliases/Open To/General Public;X-BEDEWORK-PARAM-ALIASPATH=
+ /public/cals/MainCal:/user/agrp_yuag/Open To/General Public
+BEGIN:VALARM
+TRIGGER;VALUE=DATE-TIME:20220508T120000Z
+REPEAT:4
+DURATION:PT15M
+ACTION:AUDIO
+ATTACH;FMTTYPE=audio/basic:ftp://example.com/pub/
+ sounds/bell-01.aud
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+REPEAT:2
+DURATION:PT15M
+ACTION:DISPLAY
+DESCRIPTION:Breakfast meeting with executive\n
+ team at 8:30 AM EST.
+END:VALARM
+BEGIN:VALARM
+TRIGGER;RELATED=END:-P2D
+ACTION:EMAIL
+ATTENDEE:mailto:john_doe@example.com
+SUMMARY:*** REMINDER: SEND AGENDA FOR WEEKLY STAFF MEETING ***
+DESCRIPTION:A draft agenda needs to be sent out to the attendees
+  to the weekly managers meeting (MGR-LIST). Attached is a
+  pointer the document template for the agenda file.
+ATTACH;FMTTYPE=application/msword:http://example.com/
+ templates/agenda.doc
+END:VALARM
+END:VEVENT
+END:VCALENDAR
