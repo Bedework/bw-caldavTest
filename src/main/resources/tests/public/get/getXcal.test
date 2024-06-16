@@ -1,0 +1,9 @@
+DESCRIPTION: get event
+
+METHOD: GET
+
+HEADER: ACCEPT: application/calendar+xml
+
+AUTH: false
+
+URL: cals/yuag/event.1113410.@artgallery.yale.edu.ics

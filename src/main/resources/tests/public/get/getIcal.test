@@ -1,0 +1,7 @@
+DESCRIPTION: get event
+
+METHOD: GET
+
+AUTH: false
+
+URL: cals/yuag/event.1113410.@artgallery.yale.edu.ics%2320240705T163000Z
