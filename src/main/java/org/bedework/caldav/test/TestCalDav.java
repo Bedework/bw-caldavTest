@@ -21,6 +21,7 @@ package org.bedework.caldav.test;
 import org.bedework.util.args.Args;
 import org.bedework.util.http.HttpUtil;
 import org.bedework.util.logging.BwLogger;
+import org.bedework.util.misc.ToString;
 import org.bedework.util.misc.Util;
 
 import org.apache.http.Header;
@@ -58,7 +59,7 @@ import static org.bedework.util.http.HttpUtil.setContent;
  * <p>Also occasionally used to test other components
  */
 public class TestCalDav {
-  private static BwLogger logger =
+  private static final BwLogger logger =
           new BwLogger().setLoggedClass(TestCalDav.class);
 
   private static String host = "localhost";
@@ -100,7 +101,9 @@ public class TestCalDav {
     boolean exception;
     String reason;
 
-    TestResult(final String testName, final boolean ok, final int responseCode, final boolean exception, final String reason) {
+    TestResult(final String testName, final boolean ok,
+               final int responseCode, final boolean exception,
+               final String reason) {
       this.testName = testName;
       this.ok = ok;
       this.responseCode = responseCode;
@@ -110,40 +113,21 @@ public class TestCalDav {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder();
-      pad(sb, testName, 10);
-      sb.append(" ");
-      pad(sb, String.valueOf(ok), 4);
-      sb.append(" ");
-      pad(sb, String.valueOf(responseCode), 4);
-      sb.append(" Exc=");
-      pad(sb, String.valueOf(exception), 4);
-      if (reason != null) {
-        sb.append(" ");
-        sb.append(reason);
-      }
-
-      return sb.toString();
-    }
-
-    private static final String padding = "                           ";
-
-    private void pad(final StringBuilder sb, final String val, final int padlen) {
-      int len = val.length();
-
-      if (len <= padlen) {
-        sb.append(padding.substring(0, padlen - len));
-      }
-
-      sb.append(val);
+      return new ToString(this)
+              .append("testName", testName)
+              .append(ok)
+              .append(responseCode)
+              .append("Exc", exception)
+              .append(reason)
+              .toString();
     }
   }
 
-  private static ArrayList<TestResult> results = new ArrayList<TestResult>();
+  private static final ArrayList<TestResult> results = new ArrayList<>();
 
   /** Main method
    *
-   * @param args
+   * @param args runtime arguments
    */
   public static void main(final String[] args) {
     try {
@@ -170,10 +154,10 @@ public class TestCalDav {
 
       cio = clb.build();
 
-      File dir = new File(dirName);
+      final File dir = new File(dirName);
 
       if (!dir.isDirectory()) {
-        System.out.println(dirName + " is not a directory.");
+        info(dirName + " is not a directory.");
         usage();
         return;
       }
@@ -181,13 +165,13 @@ public class TestCalDav {
       if (fileName == null) {
         // Either use the test list or the sorted directory contents.
 
-        ArrayList<File> tests = new ArrayList<File>();
+        final ArrayList<File> tests = new ArrayList<>();
 
         if (testListName != null) {
-          File testList = new File(dirName + "/" + testListName);
+          final File testList = new File(dirName + "/" + testListName);
 
-          try (FileReader frdr = new FileReader(testList)) {
-            LineNumberReader lnr = new LineNumberReader(frdr);
+          try (final FileReader frdr = new FileReader(testList)) {
+            final LineNumberReader lnr = new LineNumberReader(frdr);
 
             do {
               String ln = lnr.readLine();
@@ -198,7 +182,7 @@ public class TestCalDav {
 
               ln = ln.trim();
 
-              if (ln.startsWith("#") || (ln.length() == 0)) {
+              if (ln.startsWith("#") || (ln.isEmpty())) {
                 continue;
               }
 
@@ -206,59 +190,63 @@ public class TestCalDav {
             } while (true);
           }
         } else {
-          File[] dirfiles = dir.listFiles(new TestFilter());
-          TreeSet<File> ts = new TreeSet<>();
+          final File[] dirfiles = dir.listFiles(new TestFilter());
+          if (dirfiles == null) {
+            error("No test files in " + dirName);
+          } else {
+            final TreeSet<File> ts = new TreeSet<>();
 
-          Collections.addAll(ts, dirfiles);
+            Collections.addAll(ts, dirfiles);
 
-          tests.addAll(ts);
+            tests.addAll(ts);
+          }
         }
 
-        for (File testfile: tests) {
-          String fname = testfile.getName();
-          String tname = fname.substring(0, fname.length() - 5);
+        for (final File testfile: tests) {
+          final String fname = testfile.getName();
+          final String tname = fname.substring(0, fname.length() - 5);
 
-          Req r = new Req(user, pw, urlPrefix,
-                          testfile.getCanonicalPath(),
-                          resourcedirPath);
+          final Req r = new Req(user, pw, urlPrefix,
+                                testfile.getCanonicalPath(),
+                                resourcedirPath);
 
-          System.out.println("Test " + tname + ": " + r.description);
+          info("Test " + tname + ": " + r.description);
 
           if (!list) {
             runTest(r, tname);
           }
         }
       } else {
-        Req r = new Req(user, pw, urlPrefix,
-                        dirName + "/" + fileName + ".test",
-                        resourcedirPath);
+        final Req r = new Req(user, pw, urlPrefix,
+                              dirName + "/" + fileName + ".test",
+                              resourcedirPath);
 
-        System.out.println("Test " + fileName + ": " + r.description);
+        info("Test " + fileName + ": " + r.description);
         if (!list) {
           runTest(r, fileName);
         }
       }
-    } catch (Throwable t) {
-      System.out.println("********************************************");
-      System.out.println("********************************************");
+    } catch (final Throwable t) {
+      info("********************************************");
+      info("********************************************");
       t.printStackTrace();
-      System.out.println("********************************************");
-      System.out.println("********************************************");
+      info("********************************************");
+      info("********************************************");
     }
 
-    System.out.println("--------------------------------------------------------------");
+    info("--------------------------------------------------------------");
     int num = 0;
     int ok = 0;
-    for (TestResult tr: results) {
-      System.out.println(tr);
+    for (final TestResult tr: results) {
+      info(tr.toString());
       num++;
       if (tr.ok) {
         ok++;
       }
     }
-    System.out.println("--------------------------------------------------------------");
-    System.out.println("Ran " + num + " tests with " + ok + " successful");
-    System.out.println("--------------------------------------------------------------");
+    info("----------------------------------------------------------");
+    info("Ran " + num + " tests with " + ok + " successful");
+    info("--------------------------------------------------------------");
   }
 
   static boolean processArgs(final String[] args) throws Throwable {
@@ -324,7 +312,7 @@ public class TestCalDav {
         continue;
       }
 
-      System.out.println("Illegal argument: " +
+      info("Illegal argument: " +
                                  pargs.current());
       usage();
       return false;
@@ -336,7 +324,7 @@ public class TestCalDav {
 
     resourcedirPath = Paths.get(resourcedirName);
     if (!resourcedirPath.toFile().isDirectory()) {
-      System.out.println(resourcedirName + " is not a directory");
+      info(resourcedirName + " is not a directory");
       return false;
     }
 
@@ -355,28 +343,28 @@ public class TestCalDav {
   }
 
   static void usage() {
-    System.out.println("Usage:");
-    System.out.println("args   -debug");
-    System.out.println("       -ndebug");
-    System.out.println("       -host hostname");
-    System.out.println("       -port int");
-    System.out.println("       -user username");
-    System.out.println("       -pw pwstring");
-    System.out.println("       -urlPrefix string");
-    System.out.println("            Prefix for relative urls");
-    System.out.println("       -dir dirname");
-    System.out.println("            set location of tests");
-    System.out.println("       -list");
-    System.out.println("            Just list test file[s]");
-    System.out.println("       -test testname");
-    System.out.println("            run given test [in given directory]");
-    System.out.println();
-    System.out.println("For example");
-    System.out.println("   -dir mytestdir");
-    System.out.println("             Run all the tests in given directory");
-    System.out.println("   -dir mytestdir -testlist mylist");
-    System.out.println("             Run all the test in given directory named in the");
-    System.out.println("             file mylist in that directory.");
+    info("Usage:");
+    info("args   -debug");
+    info("       -ndebug");
+    info("       -host hostname");
+    info("       -port int");
+    info("       -user username");
+    info("       -pw pwstring");
+    info("       -urlPrefix string");
+    info("            Prefix for relative urls");
+    info("       -dir dirname");
+    info("            set location of tests");
+    info("       -list");
+    info("            Just list test file[s]");
+    info("       -test testname");
+    info("            run given test [in given directory]");
+    info();
+    info("For example");
+    info("   -dir mytestdir");
+    info("             Run all the tests in given directory");
+    info("   -dir mytestdir -testlist mylist");
+    info("             Run all the test in given directory named in the");
+    info("             file mylist in that directory.");
   }
 
   private static boolean runTest(final Req r, final String tname) {
@@ -412,7 +400,7 @@ public class TestCalDav {
       final HttpRequestBase req = findMethod(r.getMethod(), uri);
 
       if (req == null) {
-        System.out.println("No method " + r.getMethod());
+        info("No method " + r.getMethod());
         return false;
       }
 
@@ -422,12 +410,12 @@ public class TestCalDav {
         }
       }
 
-      System.out.println("About to exec " + req.getMethod() + " on " + uri);
+      info("About to exec " + req.getMethod() + " on " + uri);
       setContent(req,
                  r.getContentBytes(),
                  r.getContentType());
 
-      try (CloseableHttpResponse resp = cio.execute(req)) {
+      try (final CloseableHttpResponse resp = cio.execute(req)) {
         final HttpEntity ent = resp.getEntity();
 
         if (ent != null) {
@@ -459,18 +447,18 @@ public class TestCalDav {
 
   static void readContent(final InputStream in, final long expectedLen,
                           final String charset) throws Throwable {
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
     int len = 0;
 
     if (logger.debug()) {
-      System.out.println("Read content - expected=" + expectedLen);
+      info("Read content - expected=" + expectedLen);
     }
 
     boolean hadLf = false;
     boolean hadCr = false;
 
     while ((expectedLen < 0) || (len < expectedLen)) {
-      int ich = in.read();
+      final int ich = in.read();
       if (ich < 0) {
         break;
       }
@@ -479,7 +467,7 @@ public class TestCalDav {
 
       if (ich == '\n') {
         if (hadLf) {
-          System.out.println();
+          info();
           hadLf = false;
           hadCr = false;
         } else {
@@ -487,7 +475,7 @@ public class TestCalDav {
         }
       } else if (ich == '\r') {
         if (hadCr) {
-          System.out.println();
+          info();
           hadLf = false;
           hadCr = false;
         } else {
@@ -498,8 +486,7 @@ public class TestCalDav {
         hadCr = false;
 
         if (baos.size() > 0) {
-          String ln = new String(baos.toByteArray(), charset);
-          System.out.println(ln);
+          info(baos.toString(charset));
         }
 
         baos.reset();
@@ -510,10 +497,20 @@ public class TestCalDav {
     }
 
     if (baos.size() > 0) {
-      String ln = new String(baos.toByteArray(), charset);
-
-      System.out.println(ln);
+      info(baos.toString(charset));
     }
+  }
+
+  private static void error(final String msg) {
+    System.err.println(msg);
+  }
+
+  private static void info() {
+    System.out.println();
+  }
+
+  private static void info(final String msg) {
+    System.out.println(msg);
   }
 
   /*
