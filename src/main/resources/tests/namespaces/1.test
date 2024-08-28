@@ -1,0 +1,20 @@
+DESCRIPTION: Try supported-privilege-set
+
+EXPECT-RESPONSE: 201
+
+METHOD: PROPFIND
+
+AUTH: true
+
+URL: calendar
+
+CONTENTTYPE: text/xml
+
+CONTENT:
+<?xml version="1.0" encoding="utf-8" ?>
+<D:propfind xmlns:D='DAV:'>
+  <D:prop>
+    <D:calendar-color xmlns:D="http://apple.com/ns/ical/"/>
+    <D:supported-privilege-set/>
+ </D:prop>
+</D:propfind>
