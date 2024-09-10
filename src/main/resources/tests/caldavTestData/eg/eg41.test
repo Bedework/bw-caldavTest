@@ -4,7 +4,7 @@ METHOD: PROPFIND
 
 AUTH: true
 
-URL: /ucaldav/user/testuser05
+URL: /ucaldav/user/douglm
 
 DEPTH: infinity
 
@@ -19,6 +19,7 @@ CONTENT:
     <A:getctag/>
     <D:principal-collection-set/>
     <C:supported-calendar-data/>
+    <C:supported-calendar-component-set/>
   </D:prop>
 </D:propfind>
 

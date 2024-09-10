@@ -1,0 +1,9 @@
+DESCRIPTION: Simple vpoll with 3 events
+
+METHOD: GET
+
+AUTH: true
+
+URL: polls/vpoll04-1234567890b.ics
+
+CONTENTTYPE: text/calendar

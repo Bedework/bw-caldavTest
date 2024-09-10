@@ -4,7 +4,7 @@ METHOD: PUT
 
 AUTH: true
 
-URL: calendar/vpoll04-1234567890.ics
+URL: polls/vpoll04-1234567890b.ics
 
 CONTENTTYPE: text/calendar
 

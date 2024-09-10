@@ -1,0 +1,7 @@
+DESCRIPTION: Simple vpoll with 3 events
+
+METHOD: DELETE
+
+AUTH: true
+
+URL: polls/vpoll04-1234567890b.ics
