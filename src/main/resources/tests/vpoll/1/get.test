@@ -4,6 +4,6 @@ METHOD: GET
 
 AUTH: true
 
-URL: polls/vpoll04-1234567890b.ics
+URL: polls/vpoll04-1234567890d.ics
 
 CONTENTTYPE: text/calendar
