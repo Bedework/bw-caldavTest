@@ -21,7 +21,7 @@ package org.bedework.caldav.test;
 import org.bedework.util.args.Args;
 import org.bedework.util.http.HttpUtil;
 import org.bedework.util.logging.BwLogger;
-import org.bedework.util.misc.ToString;
+import org.bedework.base.ToString;
 import org.bedework.util.misc.Util;
 
 import org.apache.http.Header;
