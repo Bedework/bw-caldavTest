@@ -37,6 +37,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import static org.bedework.util.dates.DateFormatter.icalDateTimeUTCFormat;
+
 class Req {
   String user;
   String pw;
@@ -391,7 +393,7 @@ class Req {
   }
 
   private void replaceToken(final StringBuffer sb, final String token) {
-    int len = token.length();
+    final int len = token.length();
     int pos = 0;
     String val = null;
 
@@ -411,31 +413,22 @@ class Req {
 
   private String getTokenValue(final String token) {
     if (token.equals("@NOW@")) {
-      return isoDateTimeUTC(new Date());
+      return icalDateTimeUTCFormat.fromDate();
     }
 
     if (token.equals("@TOMORROW@")) {
-      Calendar cal = Calendar.getInstance();
+      final Calendar cal = Calendar.getInstance();
       cal.add(Calendar.DATE, 1);
-      return isoDateTimeUTC(cal.getTime());
+      return icalDateTimeUTCFormat.fromDate(cal.getTime());
     }
 
     if (token.equals("@NEXTWEEK@")) {
-      Calendar cal = Calendar.getInstance();
+      final Calendar cal = Calendar.getInstance();
       cal.add(Calendar.WEEK_OF_YEAR, 1);
-      return isoDateTimeUTC(cal.getTime());
+      return icalDateTimeUTCFormat.fromDate(cal.getTime());
     }
 
     return null;
-  }
-
-  /** Turn Date into "yyyyMMddTHHmmssZ"
-   *
-   * @param val date
-   * @return String "yyyyMMddTHHmmssZ"
-   */
-  public static String isoDateTimeUTC(final Date val) {
-    return isoDateTimeUTCFormat.format(val);
   }
 }
 
